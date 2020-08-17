@@ -48,6 +48,13 @@ public class livre
 	public void setAuteur(String auteur) {
 		this.auteur = auteur;
 	}
+
+	@Override
+	public String toString() {
+		return " " + id + " : " + titre + " // " + auteur + " ";
+	}
+	
+	
 	
 
 
