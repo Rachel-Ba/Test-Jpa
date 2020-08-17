@@ -83,6 +83,48 @@ public class TestJpa
 	}
 	
 	@Test
+	public void listeTP02Titre()
+	{
+		EntityManager em = factory.createEntityManager();
+		
+		if(em != null)
+		{
+			String query = "SELECT l FROM livre l where l.titre = 'Germinal'";
+			TypedQuery<livre> q = em.createQuery(query, livre.class);
+			for(livre l : q.getResultList())
+			{
+				System.out.println(l);
+			}
+			
+		}
+		
+		em.close();
+		factory.close();
+		
+	}
+	
+	@Test
+	public void listeTP02Auteur()
+	{
+		EntityManager em = factory.createEntityManager();
+		
+		if(em != null)
+		{
+			String query = "SELECT l FROM livre l where l.auteur = 'Gaston Pouet'";
+			TypedQuery<livre> q = em.createQuery(query, livre.class);
+			for(livre l : q.getResultList())
+			{
+				System.out.println(l);
+			}
+			
+		}
+		
+		em.close();
+		factory.close();
+		
+	}
+	
+	@Test
 	public void insertLivre()
 	{
 		EntityManager em = factory.createEntityManager();
@@ -126,7 +168,7 @@ public class TestJpa
 
 		em.getTransaction().begin();
 		
-		livre l = em.find(livre.class,6);
+		livre l = em.find(livre.class,3);
 		
 		em.remove(l);
 		em.getTransaction().commit();
